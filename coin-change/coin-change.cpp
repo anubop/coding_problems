@@ -6,16 +6,20 @@ public:
     }
 private:
     int coinChangeHelper(vector<int>& coins, int amount, unordered_map<int, int> & cache) {
-        int best = INT_MAX;
+        
+        //base cases
         if(amount < 0) {
             return -1;
         }
         if(amount == 0) {
             return 0;
         }
+        //check if we already solved for this value in cache
         if(cache.count(amount) != 0 ) {
             return cache[amount];
         }
+        //recursive cases
+        int best = INT_MAX;
         for(int coin : coins) {
             int prev = -1;
             prev = coinChangeHelper(coins, amount - coin, cache);
