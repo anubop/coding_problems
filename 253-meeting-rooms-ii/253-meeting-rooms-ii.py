@@ -3,7 +3,7 @@ import heapq
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         
-        
+        numRooms = 1
         endtimes = []
         intervals.sort() #O(n*logn)
         
@@ -15,8 +15,8 @@ class Solution:
                 heapq.heappop(endtimes)
                 heapq.heappush(endtimes, end)
             else:
-                
+                numRooms +=1
                 heapq.heappush(endtimes, interval[1])
-        return len(endtimes)
+        return numRooms
       
         
